@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Recommendation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: url('https://assets.onecompiler.app/43a768ru6/43a75vf5c/clothing-photography-featured-image.png') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Overlay Effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for better readability */
+            z-index: 1;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            color: #0077b6;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #b3e5fc;
+            border-radius: 8px;
+            background-color: #f0faff;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #0077b6;
+            background-color: white;
+            outline: none;
+            box-shadow: 0 0 4px rgba(0, 119, 182, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0077b6;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #005c99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Details for Outfit Recommendation</h2>
+        <form action="/index" method="POST">
+            <div class="input-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+
+            <div class="input-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" required>
+            </div>
+
+            <div class="input-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="body_shape">Body Shape:</label>
+                <select id="body_shape" name="body_shape" required>
+                    <option value="Rectangle">Rectangle</option>
+                    <option value="Pear">Pear</option>
+                    <option value="Hourglass">Hourglass</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Oval">Oval</option>
+                    <option value="Inverted Triangle">Inverted Triangle</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="theme">Theme:</label>
+                <select id="theme" name="theme" required>
+                    {% for theme in themes %}
+                    <option value="{{ theme }}">{{ theme }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>
