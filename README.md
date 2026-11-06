@@ -242,4 +242,4 @@ This project is for educational purposes. Add your preferred license (e.g. MIT) 
 
 ## 👤 Author
 
-*Your Name* – add your name / GitHub / contact here.
+*Pratinja vaidya* 
